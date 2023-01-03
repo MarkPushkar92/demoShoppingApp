@@ -10,6 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
 
     private var homeStore: [HomeStore] = []
+    private var bestSeller: [BestSeller] = []
     
     private let networkService = NetworkService()
 
@@ -21,7 +22,7 @@ class MainViewController: UIViewController {
         tableView.toAutoLayout()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: cellIDHot)
+        tableView.register(HotSalesTableCell.self, forCellReuseIdentifier: cellIDHot)
         tableView.register(BestSellerTableViewCell.self, forCellReuseIdentifier: cellIDBest)
         return tableView
     }()
@@ -36,6 +37,7 @@ class MainViewController: UIViewController {
        
         networkService.fetchData { allproducts in
             self.homeStore = allproducts.homeStore
+            self.bestSeller = allproducts.bestSeller
             self.applyData()
         }
     }
@@ -44,8 +46,11 @@ class MainViewController: UIViewController {
     
     private func applyData() {
         DispatchQueue.main.async {
-            if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TableViewCell {
+            if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HotSalesTableCell {
                cell.collectionView.reloadData()
+            }
+            if let cell1 = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? BestSellerTableViewCell {
+               cell1.collectionView.reloadData()
             }
             self.tableView.reloadData()
         }
@@ -57,14 +62,22 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIDHot, for: indexPath) as! TableViewCell
-        cell.homeStore = homeStore
-        cell.selectionStyle = .none
-        return cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIDHot, for: indexPath) as! HotSalesTableCell
+            cell.homeStore = homeStore
+            cell.selectionStyle = .none
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIDBest, for: indexPath) as! BestSellerTableViewCell
+            cell.bestSeller = bestSeller
+            cell.selectionStyle = .none
+            return cell
+        }
+
     }
 
     //MARK: EXTENSIONS TABLEVIEW DATA SOURCE (HEADER)
@@ -82,7 +95,11 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        if indexPath.row == 0 {
+            return 300
+        } else {
+            return 500
+        }
     }
 }
 

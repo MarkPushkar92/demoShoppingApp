@@ -8,7 +8,7 @@
 import UIKit
 
 
-class HotSalesCell: UICollectionViewCell {
+class HotSalesCollectionCell: UICollectionViewCell {
     
     let image: UIImageView = {
         let image = UIImageView()
@@ -36,7 +36,6 @@ class HotSalesCell: UICollectionViewCell {
         let button = UIButton()
         button.setTitle("Buy Now!", for: .normal)
         button.backgroundColor = .white
-    //   button.titleLabel?.font = UIFont(name: "SFProDisplay-Bold", size: 11)
         button.titleLabel?.font = .systemFont(ofSize: 11, weight: .bold)
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 5
@@ -46,9 +45,7 @@ class HotSalesCell: UICollectionViewCell {
     
     let nameLabel: UILabel = {
         var view = UILabel()
-      //  view.frame = CGRect(x: 0, y: 0, width: 109, height: 30)
         view.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-    //    view.font = UIFont(name: "SFProDisplay-Bold", size: 25)
         view.font = .systemFont(ofSize: 25, weight: .bold)
         view.textAlignment = .left
         view.attributedText = NSMutableAttributedString(string: "Iphone 12", attributes: [NSAttributedString.Key.kern: -0.33])
@@ -61,7 +58,6 @@ class HotSalesCell: UICollectionViewCell {
         var view = UILabel()
         view.frame = CGRect(x: 0, y: 0, width: 91, height: 13)
         view.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-      //  view.font = UIFont(name: "SFProDisplay-Regular", size: 11)
         view.font = .systemFont(ofSize: 11, weight: .regular)
         view.textAlignment = .left
         view.attributedText = NSMutableAttributedString(string: "Súper. Mega. Rápido.", attributes: [NSAttributedString.Key.kern: -0.33])

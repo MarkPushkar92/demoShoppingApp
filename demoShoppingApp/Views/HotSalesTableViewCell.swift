@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class HotSalesTableCell: UITableViewCell {
     
     //MARK: Properties
     
@@ -54,7 +54,7 @@ class TableViewCell: UITableViewCell {
         layout.scrollDirection = .horizontal
         collectionView.toAutoLayout()
         collectionView.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
-        collectionView.register(HotSalesCell.self, forCellWithReuseIdentifier: String(describing: HotSalesCell.self))
+        collectionView.register(HotSalesCollectionCell.self, forCellWithReuseIdentifier: String(describing: HotSalesCollectionCell.self))
         collectionView.dataSource = self
         collectionView.delegate = self
         backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
@@ -83,14 +83,14 @@ class TableViewCell: UITableViewCell {
 
 //MARK: Collection Extension
 
-extension TableViewCell: UICollectionViewDataSource {
+extension HotSalesTableCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return homeStore.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: HotSalesCell.self), for: indexPath) as! HotSalesCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: HotSalesCollectionCell.self), for: indexPath) as! HotSalesCollectionCell
         let object = homeStore[indexPath.row]
         cell.nameLabel.text = object.title
         cell.subLabel.text = object.subtitle
@@ -101,12 +101,11 @@ extension TableViewCell: UICollectionViewDataSource {
         if object.title == "Samsung Galaxy A71" {
             cell.nameLabel.text = ""
         }
-    
         return cell
     }
 }
 
-extension TableViewCell: UICollectionViewDelegateFlowLayout {
+extension HotSalesTableCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = collectionView.bounds.width - 16

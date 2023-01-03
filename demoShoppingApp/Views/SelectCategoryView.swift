@@ -107,7 +107,7 @@ class SelectCategoryView: UITableViewHeaderFooterView {
     private let circleButtonBooks = CustomButton(onTap: nil, buttonName: .books)
     private let qrButton = CustomButton(onTap: nil, buttonName: .qr)
     
-    let buttonStack: UIStackView = {
+    private let buttonStack: UIStackView = {
         let stack = UIStackView()
         stack.toAutoLayout()
         stack.axis = .horizontal
@@ -117,7 +117,7 @@ class SelectCategoryView: UITableViewHeaderFooterView {
         return stack
     }()
     
-    let labelStack: UIStackView = {
+    private let labelStack: UIStackView = {
         let stack = UIStackView()
         stack.toAutoLayout()
         stack.axis = .horizontal

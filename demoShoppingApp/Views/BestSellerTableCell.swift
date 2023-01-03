@@ -13,7 +13,7 @@ class BestSellerTableViewCell: UITableViewCell {
     
     var bestSeller: [BestSeller] = []
 
-    private let hotSales: UILabel = {
+    private let bestSalesLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         label.textColor = UIColor(red: 0.004, green: 0, blue: 0.208, alpha: 1)
@@ -51,30 +51,29 @@ class BestSellerTableViewCell: UITableViewCell {
     }
     
     private func setupViews() {
+        layout.scrollDirection = .vertical
         collectionView.toAutoLayout()
         collectionView.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
-        collectionView.register(HotSalesCell.self, forCellWithReuseIdentifier: String(describing: HotSalesCell.self))
+        collectionView.register(BestSellerCollectionCell.self, forCellWithReuseIdentifier: String(describing: BestSellerCollectionCell.self))
         collectionView.dataSource = self
         collectionView.delegate = self
         backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
-        addSubviews(seeMore, hotSales, collectionView)
+        addSubviews(seeMore, bestSalesLabel, collectionView)
         
         let constrains = [
-            
-            hotSales.widthAnchor.constraint(equalToConstant: 111),
-            hotSales.heightAnchor.constraint(equalToConstant: 32),
-            hotSales.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 17),
-            hotSales.topAnchor.constraint(equalTo: self.topAnchor),
+      
+            bestSalesLabel.heightAnchor.constraint(equalToConstant: 32),
+            bestSalesLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 17),
+            bestSalesLabel.topAnchor.constraint(equalTo: self.topAnchor),
           
             seeMore.heightAnchor.constraint(equalToConstant: 19),
             seeMore.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 317),
-            seeMore.bottomAnchor.constraint(equalTo: hotSales.bottomAnchor),
+            seeMore.bottomAnchor.constraint(equalTo: bestSalesLabel.bottomAnchor),
             
-            collectionView.leadingAnchor.constraint(equalTo: hotSales.leadingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            collectionView.topAnchor.constraint(equalTo: hotSales.bottomAnchor, constant: 10),
-            
-            
+            collectionView.topAnchor.constraint(equalTo: bestSalesLabel.bottomAnchor, constant: 10),
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constrains)
     }
@@ -89,8 +88,12 @@ extension BestSellerTableViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: HotSalesCell.self), for: indexPath) as! HotSalesCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: BestSellerCollectionCell.self), for: indexPath) as! BestSellerCollectionCell
         let object = bestSeller[indexPath.row]
+        cell.nameLabel.text = object.title
+        cell.priceLabel.text = String(object.priceWithoutDiscount)
+        cell.discountPriceLabel.text = String(object.discountPrice)
+        cell.image.load(url: URL(string: object.picture) ?? URL(string: "https://img.ibxk.com.br/2020/09/23/23104013057475.jpg?w=1120&h=420&mode=crop&scale=both")!)
         
         return cell
     }
@@ -99,17 +102,18 @@ extension BestSellerTableViewCell: UICollectionViewDataSource {
 extension BestSellerTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = 181
+
+        let width: CGFloat = collectionView.bounds.width / 2 - 28
         let height: CGFloat = 227
         return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        return UIEdgeInsets(top: 12, left: 14, bottom: 12, right: 14)
     }
 }
 
