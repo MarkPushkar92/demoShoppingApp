@@ -10,20 +10,16 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    let mainCoordinator = MainCoordinator()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
-        
-        window?.rootViewController = mainCoordinator.tabBarController
+        let nav = UINavigationController()
+        let mainCoordinator = MainCoordinator(navigation: nav)
+        mainCoordinator.start()
+        window?.rootViewController = mainCoordinator.navigation
         window?.makeKeyAndVisible()
-     
-//        for family in UIFont.familyNames.sorted() {
-//            let names = UIFont.fontNames(forFamilyName: family)
-//            print("Family: \(family) Font names: \(names)")
-//        }
         
     }
 

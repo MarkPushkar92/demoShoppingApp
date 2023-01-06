@@ -13,7 +13,6 @@ class SelectCategoryView: UITableViewHeaderFooterView {
     
     private let selectCategoryLabel: UILabel = {
         let label = UILabel()
-      //  label.frame = CGRect(x: 0, y: 0, width: 193, height: 32)
         label.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         label.textColor = UIColor(red: 0.004, green: 0, blue: 0.208, alpha: 1)
         label.font = UIFont(name: "MarkPro-Bold", size: 25)
@@ -25,7 +24,6 @@ class SelectCategoryView: UITableViewHeaderFooterView {
     
     private let locationLabel: UILabel = {
         var view = UILabel()
-     //   view.frame = CGRect(x: 0, y: 0, width: 119, height: 19)
         view.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         view.textColor = UIColor(red: 0.004, green: 0, blue: 0.208, alpha: 1)
         view.font = UIFont(name: "MarkPro-Medium", size: 15)
@@ -47,17 +45,15 @@ class SelectCategoryView: UITableViewHeaderFooterView {
     private let locationButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "chevron.down" ), for: .normal)
-    //    button.frame = CGRect(x: 0, y: 0, width: 10, height: 5)
         button.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         button.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor
         button.toAutoLayout()
         return button
     }()
     
-    private let filterButton: UIButton = {
+    let filterButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "filterImg"), for: .normal)
-     //   button.frame = CGRect(x: 0, y: 0, width: 11, height: 13)
         button.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         button.toAutoLayout()
         return button
@@ -65,7 +61,6 @@ class SelectCategoryView: UITableViewHeaderFooterView {
     
     private let viewAllLabel: UILabel = {
         var view = UILabel()
-     //   view.frame = CGRect(x: 0, y: 0, width: 52, height: 19)
         view.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         view.textColor = UIColor(red: 1, green: 0.429, blue: 0.304, alpha: 1)
         view.font = UIFont(name: "MarkPro", size: 15)
@@ -101,12 +96,12 @@ class SelectCategoryView: UITableViewHeaderFooterView {
     private let healthlable = CustomLabel(labelName: .health)
     private let bookLabel = CustomLabel(labelName: .books)
     
-    private let circleButtonPhones = CustomButton(onTap: nil, buttonName: .phones)
-    private let circleButtonComp = CustomButton(onTap: nil, buttonName: .computer)
-    private let circleButtonHealth = CustomButton(onTap: nil, buttonName: .health)
-    private let circleButtonBooks = CustomButton(onTap: nil, buttonName: .books)
-    private let qrButton = CustomButton(onTap: nil, buttonName: .qr)
-    
+    let circleButtonPhones = CustomButton(buttonName: .phones)
+    let circleButtonComp = CustomButton(buttonName: .computer)
+    let circleButtonHealth = CustomButton(buttonName: .health)
+    let circleButtonBooks = CustomButton(buttonName: .books)
+    private let qrButton = CustomButton(buttonName: .qr)
+        
     private let buttonStack: UIStackView = {
         let stack = UIStackView()
         stack.toAutoLayout()
@@ -215,6 +210,7 @@ class SelectCategoryView: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupViews()
+        searchTextField.delegate = self
     }
      
     required init?(coder: NSCoder) {
@@ -222,5 +218,11 @@ class SelectCategoryView: UITableViewHeaderFooterView {
     }
 }
 
-
-
+extension SelectCategoryView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+}
