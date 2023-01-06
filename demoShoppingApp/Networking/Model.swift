@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: - Welcome
 struct Allproducts: Codable {
     let homeStore: [HomeStore]
     let bestSeller: [BestSeller]
@@ -49,5 +48,21 @@ struct HomeStore: Codable {
         case isNew = "is_new"
         case title, subtitle, picture
         case isBuy = "is_buy"
+    }
+}
+
+struct ProductDetails: Codable {
+    let cpu, camera: String
+    let capacity, color: [String]
+    let id: String
+    let images: [String]
+    let isFavorites: Bool
+    let price: Int
+    let rating: Double
+    let sd, ssd, title: String
+
+    enum CodingKeys: String, CodingKey {
+        case cpu = "CPU"
+        case camera, capacity, color, id, images, isFavorites, price, rating, sd, ssd, title
     }
 }

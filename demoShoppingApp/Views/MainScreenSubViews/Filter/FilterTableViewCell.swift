@@ -69,7 +69,7 @@ class FilterCell: UITableViewCell {
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 44),
             label.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
             textField.leadingAnchor.constraint(equalTo: label.leadingAnchor),
-            textField.widthAnchor.constraint(equalToConstant: 337),
+            textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             textField.heightAnchor.constraint(equalToConstant: 37),
             textField.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 20),
             textFieldImage.centerYAnchor.constraint(equalTo: textField.centerYAnchor),
