@@ -67,7 +67,18 @@ class DetailsViewController: UIViewController {
     private func applyData() {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
+            self.setupSubView()
+
         }
+    }
+    
+    private func setupSubView() {
+        subView.name = details?.title ?? ""
+        subView.cpu = details?.cpu ?? ""
+        subView.camera = details?.camera ?? ""
+        subView.sd = details?.sd ?? ""
+        subView.ssd = details?.ssd ?? ""
+        
     }
     
     private func setupViews() {

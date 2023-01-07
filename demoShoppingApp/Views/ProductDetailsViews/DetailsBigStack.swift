@@ -37,7 +37,7 @@ class DetailsStackView: UIStackView {
         return imageView
     }()
     
-    private let cpuLabel: UILabel = {
+    let cpuLabel: UILabel = {
         var view = UILabel()
         view.frame = CGRect(x: 0, y: 0, width: 64, height: 14)
         view.backgroundColor = .white
@@ -48,7 +48,7 @@ class DetailsStackView: UIStackView {
         return view
     }()
     
-    private let sdLabel: UILabel = {
+    let sdLabel: UILabel = {
         var view = UILabel()
         view.frame = CGRect(x: 0, y: 0, width: 64, height: 14)
         view.backgroundColor = .white
@@ -59,7 +59,7 @@ class DetailsStackView: UIStackView {
         return view
     }()
     
-    private let ssdLabel: UILabel = {
+    let ssdLabel: UILabel = {
         var view = UILabel()
         view.frame = CGRect(x: 0, y: 0, width: 64, height: 14)
         view.backgroundColor = .white
@@ -70,7 +70,7 @@ class DetailsStackView: UIStackView {
         return view
     }()
     
-    private let cameraLabel: UILabel = {
+    let cameraLabel: UILabel = {
         var view = UILabel()
         view.frame = CGRect(x: 0, y: 0, width: 64, height: 14)
         view.backgroundColor = .white
