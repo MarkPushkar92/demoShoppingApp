@@ -10,6 +10,7 @@
 		630AC04A29680F4A0054A049 /* ProductDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630AC04929680F4A0054A049 /* ProductDetailsController.swift */; };
 		630AC04D29680FDA0054A049 /* DetailsImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630AC04C29680FDA0054A049 /* DetailsImageCell.swift */; };
 		630AC0512968110A0054A049 /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630AC0502968110A0054A049 /* ProductDetailsView.swift */; };
+		6314377E29695CE600676A47 /* DetailsBigStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6314377D29695CE600676A47 /* DetailsBigStack.swift */; };
 		632B06D62958294300907102 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B06D52958294300907102 /* RoundButton.swift */; };
 		632B06D829584B3B00907102 /* RoundButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B06D729584B3A00907102 /* RoundButtonLabel.swift */; };
 		632F2C3A29655EFF006C1B34 /* FilterTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F2C3929655EFF006C1B34 /* FilterTable.swift */; };
@@ -30,7 +31,7 @@
 		63838EBD2955877A00EBB066 /* SelectCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63838EBC2955877A00EBB066 /* SelectCategoryView.swift */; };
 		63838EBF29558A3200EBB066 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63838EBE29558A3200EBB066 /* UIViewExtension.swift */; };
 		6386CF842966BBD50081FA88 /* FavesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6386CF832966BBD50081FA88 /* FavesViewController.swift */; };
-		6386CF862966BBF10081FA88 /* BusketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6386CF852966BBF10081FA88 /* BusketController.swift */; };
+		6386CF862966BBF10081FA88 /* DetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6386CF852966BBF10081FA88 /* DetailsController.swift */; };
 		6386CF8C2966CEAF0081FA88 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6386CF8B2966CEAF0081FA88 /* BarView.swift */; };
 		6387EB5B295C417F008CE72F /* HotSalesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6387EB5A295C417F008CE72F /* HotSalesTableViewCell.swift */; };
 		63A44D4B296402F500709A65 /* BestSellerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A44D4A296402F500709A65 /* BestSellerCollectionCell.swift */; };
@@ -43,6 +44,7 @@
 		630AC04929680F4A0054A049 /* ProductDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsController.swift; sourceTree = "<group>"; };
 		630AC04C29680FDA0054A049 /* DetailsImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsImageCell.swift; sourceTree = "<group>"; };
 		630AC0502968110A0054A049 /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
+		6314377D29695CE600676A47 /* DetailsBigStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBigStack.swift; sourceTree = "<group>"; };
 		632B06D52958294300907102 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		632B06D729584B3A00907102 /* RoundButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButtonLabel.swift; sourceTree = "<group>"; };
 		632F2C3929655EFF006C1B34 /* FilterTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTable.swift; sourceTree = "<group>"; };
@@ -65,7 +67,7 @@
 		63838EBC2955877A00EBB066 /* SelectCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryView.swift; sourceTree = "<group>"; };
 		63838EBE29558A3200EBB066 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		6386CF832966BBD50081FA88 /* FavesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavesViewController.swift; sourceTree = "<group>"; };
-		6386CF852966BBF10081FA88 /* BusketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusketController.swift; sourceTree = "<group>"; };
+		6386CF852966BBF10081FA88 /* DetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsController.swift; sourceTree = "<group>"; };
 		6386CF8B2966CEAF0081FA88 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		6387EB5A295C417F008CE72F /* HotSalesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotSalesTableViewCell.swift; sourceTree = "<group>"; };
 		63A44D4A296402F500709A65 /* BestSellerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellerCollectionCell.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			children = (
 				630AC04C29680FDA0054A049 /* DetailsImageCell.swift */,
 				630AC0502968110A0054A049 /* ProductDetailsView.swift */,
+				6314377D29695CE600676A47 /* DetailsBigStack.swift */,
 			);
 			path = ProductDetailsViews;
 			sourceTree = "<group>";
@@ -196,7 +199,7 @@
 				63DA0CA829532D540031824F /* MainViewController.swift */,
 				6386CF832966BBD50081FA88 /* FavesViewController.swift */,
 				630AC04929680F4A0054A049 /* ProductDetailsController.swift */,
-				6386CF852966BBF10081FA88 /* BusketController.swift */,
+				6386CF852966BBF10081FA88 /* DetailsController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -296,7 +299,7 @@
 				63DA0CA229532A2F0031824F /* Coordinator.swift in Sources */,
 				632F2C3C29655F0F006C1B34 /* FilterTableViewCell.swift in Sources */,
 				630AC04A29680F4A0054A049 /* ProductDetailsController.swift in Sources */,
-				6386CF862966BBF10081FA88 /* BusketController.swift in Sources */,
+				6386CF862966BBF10081FA88 /* DetailsController.swift in Sources */,
 				632F2C3E29655F53006C1B34 /* FilterHeader.swift in Sources */,
 				632B06D62958294300907102 /* RoundButton.swift in Sources */,
 				634C3297295306D400965231 /* AppDelegate.swift in Sources */,
@@ -305,6 +308,7 @@
 				63472FB5295D9DFF0010D33B /* Model.swift in Sources */,
 				63472FB9295DC31E0010D33B /* NetworkService.swift in Sources */,
 				63DA0CAB29532DA90031824F /* MainCoordinator.swift in Sources */,
+				6314377E29695CE600676A47 /* DetailsBigStack.swift in Sources */,
 				63A44D4B296402F500709A65 /* BestSellerCollectionCell.swift in Sources */,
 				632B06D829584B3B00907102 /* RoundButtonLabel.swift in Sources */,
 				63838EBD2955877A00EBB066 /* SelectCategoryView.swift in Sources */,

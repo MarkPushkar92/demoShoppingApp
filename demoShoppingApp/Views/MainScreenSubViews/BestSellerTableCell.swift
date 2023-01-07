@@ -11,6 +11,8 @@ class BestSellerTableViewCell: UITableViewCell {
     
     //MARK: Properties
     
+    var OnTap: (() -> (Void))?
+    
     var bestSeller: [BestSeller] = []
 
     private let bestSalesLabel: UILabel = {
@@ -94,8 +96,12 @@ extension BestSellerTableViewCell: UICollectionViewDataSource {
         cell.priceLabel.text = String(object.priceWithoutDiscount)
         cell.discountPriceLabel.text = String(object.discountPrice)
         cell.image.load(url: URL(string: object.picture) ?? URL(string: "https://img.ibxk.com.br/2020/09/23/23104013057475.jpg?w=1120&h=420&mode=crop&scale=both")!)
-        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let OnTap else { return }
+        OnTap()
     }
 }
 

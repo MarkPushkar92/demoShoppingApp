@@ -121,6 +121,7 @@ class MainViewController: UIViewController {
         customBar.busketButton.addTarget(self, action: #selector(goToBusket), for: .touchUpInside)
     }
     
+    
 }
 
 //MARK: EXTENSIONS
@@ -136,11 +137,13 @@ extension MainViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIDHot, for: indexPath) as! HotSalesTableCell
             cell.homeStore = homeStore
             cell.selectionStyle = .none
+            cell.OnTap = coordinator?.gotoDetails
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIDBest, for: indexPath) as! BestSellerTableViewCell
             cell.bestSeller = bestSeller
             cell.selectionStyle = .none
+            cell.OnTap = coordinator?.gotoDetails
             return cell
         }
     }
@@ -181,8 +184,8 @@ private extension MainViewController {
         view.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         let constraints = [
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: customBar.topAnchor),
             
             customBar.heightAnchor.constraint(equalToConstant: 72),

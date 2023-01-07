@@ -11,6 +11,8 @@ class HotSalesTableCell: UITableViewCell {
     
     //MARK: Properties
     
+    var OnTap: (() -> (Void))?
+    
     var homeStore: [HomeStore] = []
 
     private let hotSales: UILabel = {
@@ -102,6 +104,11 @@ extension HotSalesTableCell: UICollectionViewDataSource {
             cell.nameLabel.text = ""
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let OnTap else { return }
+        OnTap()
     }
 }
 

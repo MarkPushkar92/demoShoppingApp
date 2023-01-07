@@ -41,4 +41,36 @@ struct NetworkService {
         return nil
     }
     
+    func fetchDetails(completionHandler: @escaping (ProductDetails) -> Void) {
+        
+        let urlString = "https://run.mocky.io/v3/6c14c560-15c6-4248-b9d2-b4508df7d4f5"
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url, timeoutInterval: Double.infinity)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                print(String(describing: error))
+                return
+            }
+            if let parsedData = self.parseDetails(withData: data) {
+                completionHandler(parsedData)
+            }
+        }
+        
+        task.resume()
+    }
+    
+    private func parseDetails(withData data: Data) -> ProductDetails? {
+        let decoder = JSONDecoder()
+        do {
+            let productList = try decoder.decode(ProductDetails.self, from: data)
+            return productList
+        } catch let error as NSError {
+            print(error.localizedDescription)
+            print("parsing error")
+        }
+        return nil
+    }
+    
 }

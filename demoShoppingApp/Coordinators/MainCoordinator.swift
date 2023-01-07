@@ -11,14 +11,12 @@ class MainCoordinator: Coordinator {
     
     var coordinators: [Coordinator] = []
     var navigation: UINavigationController
-   
-    
+ 
     init(navigation: UINavigationController) {
         self.navigation = navigation
-        
-        
+  
     }
-    
+ 
     func start() {
         let mainVC = MainViewController()
         mainVC.coordinator = self
@@ -26,14 +24,19 @@ class MainCoordinator: Coordinator {
     }
     
     func gotoBusket() {
-        let vc = BusketViewController()
+        let vc = BusketController()
         vc.coordinator = self
         navigation.pushViewController(vc, animated: true)
-        print("hi again")
     }
     
     func gotoFaves() {
         let vc = FavesViewController()
+        vc.coordinator = self
+        navigation.pushViewController(vc, animated: true)
+    }
+    
+    func gotoDetails() {
+        let vc = DetailsViewController()
         vc.coordinator = self
         navigation.pushViewController(vc, animated: true)
     }
