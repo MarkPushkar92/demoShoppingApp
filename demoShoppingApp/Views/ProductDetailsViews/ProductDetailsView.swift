@@ -7,54 +7,9 @@
 
 import UIKit
 
-class ProductDetailsView: UIView {
+class ProductDetailsView: UIView, UIGestureRecognizerDelegate {
     
-    //MARK: Accessable UI Elements
-    
-    var name : String {
-        get {
-            return title.text ?? ""
-        }
-        set(newValue) {
-            title.text = newValue
-        }
-    }
-    
-    var cpu : String {
-        get {
-            return detailsStack.cpuLabel.text ?? ""
-        }
-        set(newValue) {
-            detailsStack.cpuLabel.text = newValue
-        }
-    }
-    
-    var camera : String {
-        get {
-            return detailsStack.cameraLabel.text ?? ""
-        }
-        set(newValue) {
-            detailsStack.cameraLabel.text = newValue
-        }
-    }
-    
-    var sd : String {
-        get {
-            return detailsStack.sdLabel.text ?? ""
-        }
-        set(newValue) {
-            detailsStack.sdLabel.text = newValue
-        }
-    }
-    
-    var ssd : String {
-        get {
-            return detailsStack.ssdLabel.text ?? ""
-        }
-        set(newValue) {
-            detailsStack.ssdLabel.text = newValue
-        }
-    }
+    var onTap: (() -> Void)?
  
     var details: ProductDetails?
 
@@ -66,7 +21,6 @@ class ProductDetailsView: UIView {
         view.textColor = UIColor(red: 0.004, green: 0, blue: 0.208, alpha: 1)
         view.font = UIFont(name: "MarkPro-Medium", size: 24)
         view.textAlignment = .center
-       // view.text = "Galaxy Note 20 Ultra"
         view.toAutoLayout()
         return view
     }()
@@ -140,8 +94,8 @@ class ProductDetailsView: UIView {
     private let colorButtonFirst: UIButton = {
         var button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: 39.29, height: 39.29)
-        button.setImage(UIImage(named: "tick"), for: .normal)
         button.layer.backgroundColor = UIColor(red: 0.467, green: 0.175, blue: 0.012, alpha: 1).cgColor
+        button.setImage(UIImage(named: "tick"), for: .normal)
         button.layer.cornerRadius = button.frame.width / 2
         button.toAutoLayout()
         return button
@@ -219,6 +173,10 @@ class ProductDetailsView: UIView {
     
     //MARK: Methods
     
+    @objc private func handleTapOnBuyView() {
+        onTap!()
+    }
+    
     private func setupButtons() {
         let filledStar = UIImage(named: "Star")
         for _ in 1 ... Int(details?.rating ?? 5) {
@@ -233,6 +191,12 @@ class ProductDetailsView: UIView {
         self.toAutoLayout()
         self.backgroundColor = .white
         setupButtons()
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnBuyView))
+        tapRecognizer.delegate = self
+        tapRecognizer.numberOfTapsRequired = 2
+        tapRecognizer.numberOfTouchesRequired = 1
+        buyView.addGestureRecognizer(tapRecognizer)
         
         addSubviews(title, ratingStack, saveToFavesButton, colorCapacityLabel, colorButtonFirst, colorButtonSecond, capacityLabelFirst, capacityLabelSecond, buyView, addtoCartLabel, priceLabel, shopLabel, featuresLabel, detailsLabel, detailsStack)
         let constrains = [
@@ -308,12 +272,30 @@ class ProductDetailsView: UIView {
         
     }
     
+    func reload() {
+        title.text = details?.title
+        detailsStack.cpuLabel.text = details?.cpu
+        detailsStack.cpuLabel.text = details?.camera
+        detailsStack.ssdLabel.text = details?.ssd
+        detailsStack.sdLabel.text = details?.sd
+        let priceStr: String = {
+            var str = String(details?.price ?? 0)
+            if str.count >= 4 {
+                str.insert(",", at: str.index(str.endIndex, offsetBy: -3))
+            }
+            str.insert("$", at: str.startIndex)
+            str.insert(contentsOf: ".00", at: str.endIndex)
+            return str
+        }()
+        priceLabel.text = priceStr
+       
+    }
+    
     //MARK: Init
     
     init() {
         super.init(frame: .zero)
         setupViews()
-       
     }
      
     required init?(coder: NSCoder) {

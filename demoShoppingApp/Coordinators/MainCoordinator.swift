@@ -24,7 +24,7 @@ class MainCoordinator: Coordinator {
     }
     
     func gotoBusket() {
-        let vc = BusketController()
+        let vc = BasketController()
         vc.coordinator = self
         navigation.pushViewController(vc, animated: true)
     }

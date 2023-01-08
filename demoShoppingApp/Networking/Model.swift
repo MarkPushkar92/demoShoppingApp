@@ -66,3 +66,19 @@ struct ProductDetails: Codable {
         case camera, capacity, color, id, images, isFavorites, price, rating, sd, ssd, title
     }
 }
+
+
+// MARK: - Busket
+struct BasketContainer: Codable {
+    let basket: [Basket]
+    let delivery, id: String
+    let total: Int
+}
+
+// MARK: - Basket
+struct Basket: Codable {
+    let id: Int
+    let images: String
+    let price: Int
+    let title: String
+}

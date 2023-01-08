@@ -73,4 +73,37 @@ struct NetworkService {
         return nil
     }
     
+    func fetchBusket(completionHandler: @escaping (BasketContainer) -> Void) {
+        
+        let urlString = "https://run.mocky.io/v3/53539a72-3c5f-4f30-bbb1-6ca10d42c149"
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url, timeoutInterval: Double.infinity)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                print(String(describing: error))
+                return
+            }
+            if let parsedData = self.parseBasket(withData: data) {
+                completionHandler(parsedData)
+            }
+        }
+        
+        task.resume()
+    }
+    
+    private func parseBasket(withData data: Data) -> BasketContainer? {
+        let decoder = JSONDecoder()
+        do {
+            let productList = try decoder.decode(BasketContainer.self, from: data)
+            return productList
+        } catch let error as NSError {
+            print(error.localizedDescription)
+            print("parsing error")
+        }
+        return nil
+    }
+    
+    
 }

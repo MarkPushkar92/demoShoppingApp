@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		630AC04A29680F4A0054A049 /* BusketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630AC04929680F4A0054A049 /* BusketController.swift */; };
+		630AC04A29680F4A0054A049 /* BasketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630AC04929680F4A0054A049 /* BasketController.swift */; };
 		630AC04D29680FDA0054A049 /* DetailsImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630AC04C29680FDA0054A049 /* DetailsImageCell.swift */; };
 		630AC0512968110A0054A049 /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630AC0502968110A0054A049 /* ProductDetailsView.swift */; };
 		6314377E29695CE600676A47 /* DetailsBigStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6314377D29695CE600676A47 /* DetailsBigStack.swift */; };
+		632810EB296AAD11009555CD /* BasketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632810EA296AAD11009555CD /* BasketView.swift */; };
+		632810ED296AAD1C009555CD /* BasketViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632810EC296AAD1C009555CD /* BasketViewCell.swift */; };
+		632810EF296AADC7009555CD /* BasketFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632810EE296AADC7009555CD /* BasketFooter.swift */; };
 		632B06D62958294300907102 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B06D52958294300907102 /* RoundButton.swift */; };
 		632B06D829584B3B00907102 /* RoundButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B06D729584B3A00907102 /* RoundButtonLabel.swift */; };
 		632F2C3A29655EFF006C1B34 /* FilterTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632F2C3929655EFF006C1B34 /* FilterTable.swift */; };
@@ -41,10 +44,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		630AC04929680F4A0054A049 /* BusketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusketController.swift; sourceTree = "<group>"; };
+		630AC04929680F4A0054A049 /* BasketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketController.swift; sourceTree = "<group>"; };
 		630AC04C29680FDA0054A049 /* DetailsImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsImageCell.swift; sourceTree = "<group>"; };
 		630AC0502968110A0054A049 /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
 		6314377D29695CE600676A47 /* DetailsBigStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBigStack.swift; sourceTree = "<group>"; };
+		632810EA296AAD11009555CD /* BasketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketView.swift; sourceTree = "<group>"; };
+		632810EC296AAD1C009555CD /* BasketViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewCell.swift; sourceTree = "<group>"; };
+		632810EE296AADC7009555CD /* BasketFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketFooter.swift; sourceTree = "<group>"; };
 		632B06D52958294300907102 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		632B06D729584B3A00907102 /* RoundButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButtonLabel.swift; sourceTree = "<group>"; };
 		632F2C3929655EFF006C1B34 /* FilterTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTable.swift; sourceTree = "<group>"; };
@@ -109,6 +115,16 @@
 				6314377D29695CE600676A47 /* DetailsBigStack.swift */,
 			);
 			path = ProductDetailsViews;
+			sourceTree = "<group>";
+		};
+		632810E9296AACF1009555CD /* BusketViews */ = {
+			isa = PBXGroup;
+			children = (
+				632810EA296AAD11009555CD /* BasketView.swift */,
+				632810EC296AAD1C009555CD /* BasketViewCell.swift */,
+				632810EE296AADC7009555CD /* BasketFooter.swift */,
+			);
+			path = BusketViews;
 			sourceTree = "<group>";
 		};
 		632F2C3829655EDA006C1B34 /* Filter */ = {
@@ -198,7 +214,7 @@
 			children = (
 				63DA0CA829532D540031824F /* MainViewController.swift */,
 				6386CF832966BBD50081FA88 /* FavesViewController.swift */,
-				630AC04929680F4A0054A049 /* BusketController.swift */,
+				630AC04929680F4A0054A049 /* BasketController.swift */,
 				6386CF852966BBF10081FA88 /* DetailsController.swift */,
 			);
 			path = ViewControllers;
@@ -207,6 +223,7 @@
 		63DA0CAF295338EC0031824F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				632810E9296AACF1009555CD /* BusketViews */,
 				630AC04B29680FA10054A049 /* ProductDetailsViews */,
 				630AC04829680A600054A049 /* MainScreenSubViews */,
 				6387EB5D295C4B32008CE72F /* Customs&Extns */,
@@ -294,16 +311,19 @@
 				6386CF8C2966CEAF0081FA88 /* BarView.swift in Sources */,
 				63DA0CA929532D540031824F /* MainViewController.swift in Sources */,
 				630AC0512968110A0054A049 /* ProductDetailsView.swift in Sources */,
+				632810EF296AADC7009555CD /* BasketFooter.swift in Sources */,
 				632F2C3A29655EFF006C1B34 /* FilterTable.swift in Sources */,
 				63472FB7295DA0EC0010D33B /* HotSalesCollectionCell.swift in Sources */,
 				63DA0CA229532A2F0031824F /* Coordinator.swift in Sources */,
 				632F2C3C29655F0F006C1B34 /* FilterTableViewCell.swift in Sources */,
-				630AC04A29680F4A0054A049 /* BusketController.swift in Sources */,
+				630AC04A29680F4A0054A049 /* BasketController.swift in Sources */,
 				6386CF862966BBF10081FA88 /* DetailsController.swift in Sources */,
 				632F2C3E29655F53006C1B34 /* FilterHeader.swift in Sources */,
 				632B06D62958294300907102 /* RoundButton.swift in Sources */,
+				632810ED296AAD1C009555CD /* BasketViewCell.swift in Sources */,
 				634C3297295306D400965231 /* AppDelegate.swift in Sources */,
 				6386CF842966BBD50081FA88 /* FavesViewController.swift in Sources */,
+				632810EB296AAD11009555CD /* BasketView.swift in Sources */,
 				630AC04D29680FDA0054A049 /* DetailsImageCell.swift in Sources */,
 				63472FB5295D9DFF0010D33B /* Model.swift in Sources */,
 				63472FB9295DC31E0010D33B /* NetworkService.swift in Sources */,

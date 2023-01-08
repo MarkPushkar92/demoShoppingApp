@@ -53,32 +53,31 @@ class DetailsViewController: UIViewController {
         setupViews()
         networkService.fetchDetails { product in
             self.details = product
+            self.subView.details = self.details
             self.applyData()
         }
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: busketButton)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: returnButton)
         returnButton.addTarget(self, action: #selector(returnPressed), for: .touchUpInside)
+        subView.onTap = {
+            self.toBasketPressed()
+        }
+        busketButton.addTarget(self, action: #selector(toBasketPressed), for: .touchUpInside)
     }
     
     @objc private func returnPressed() {
         navigationController?.popToRootViewController(animated: true)
     }
     
+    @objc private func toBasketPressed() {
+        self.coordinator?.gotoBusket()
+    }
+    
     private func applyData() {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
-            self.setupSubView()
-
+            self.subView.reload()
         }
-    }
-    
-    private func setupSubView() {
-        subView.name = details?.title ?? ""
-        subView.cpu = details?.cpu ?? ""
-        subView.camera = details?.camera ?? ""
-        subView.sd = details?.sd ?? ""
-        subView.ssd = details?.ssd ?? ""
-        
     }
     
     private func setupViews() {
@@ -99,7 +98,6 @@ class DetailsViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(constrains)
         title = "Product details"
-      
     }
     
     private func setupCollectionView() {
